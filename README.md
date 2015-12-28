@@ -9,8 +9,9 @@ Initially, we have *train.csv* and *test.csv*.
 	- *trainingLabel.csv*: train class data, in which **1** shows the passenger **survived**;
 	- *Features.csv*: the feature names in the resulted data matrices;
 	- *trainingID.csv*: IDs of the passengers given as train data;
-	- *testID.csv*: IDs of the passengers given as test data.
-Cleaning went in this way:
+	- *testID.csv*: IDs of the passengers given as test data. 
+
+	Cleaning went in this way:
 	- Completely dropped **Cabin** column because most data are not available;
 	- Completely dropped the rows containing empty (*""*) info in train data matrix formation;
 	- In test data matrix formation, used *-1* instead of empty (*""*) info;
