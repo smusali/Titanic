@@ -26,8 +26,5 @@ Initially, we have `data/train/train.csv` and `data/test/test.csv`.
 
 Other parts are straightforward.
 
-### NOTE:
-Ignore `data_selection.m`
-
-### P.S.:
-Still trying to get `zero true error`, since in the ranking some users got that
+### NOTES:
+- Ignore `data_selection.m`
