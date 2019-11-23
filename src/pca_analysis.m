@@ -2,17 +2,17 @@ clc;
 clear all;
 close all;
 
-train_data_1 = csvread('trainingData.csv');
+train_data_1 = csvread('../data/train/trainingData.csv');
 test_data_1 = csvread('testData.csv');
 req_Columns = [1, 2, 4, 5, 6, 8];
 train_data_1 = train_data_1(:,req_Columns);
 test_data_1 = test_data_1(:,req_Columns);
-train_data_2 = csvread('training_data.csv');
+train_data_2 = csvread('../data/train/training_data.csv');
 test_data_2 = csvread('test_data.csv');
 test_ID = csvread('testID.csv');
 train_size = size(train_data_1, 1);
 
-train_label = csvread('trainingLabel.csv');
+train_label = csvread('../data/train/trainingLabel.csv');
 
 train_data_1 = zscore(train_data_1);
 train_data_2 = zscore(train_data_2);

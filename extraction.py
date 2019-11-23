@@ -21,7 +21,7 @@ print 'Reading has started';
 header = [];
 trainingData = [];
 testData = [];
-with open('train.csv', 'rb') as trainFile:
+with open('./data/train/train.csv', 'rb') as trainFile:
     rowNum = 0;
     givenTrainData = csv.reader(trainFile, delimiter=',');
     for row in givenTrainData:
@@ -32,7 +32,7 @@ with open('train.csv', 'rb') as trainFile:
             if (is_okay(row, 10)):
                 trainingData.append(row);
 
-with open('test.csv', 'rb') as testFile:
+with open('./data/test/test.csv', 'rb') as testFile:
     rowNum = 0;
     givenTestData = csv.reader(testFile, delimiter=',');
     for row in givenTestData:
@@ -316,11 +316,11 @@ resultedTestData = np.transpose(np.array(resultedTestData));
 print 'Merging and forming data have finished';
 print 'Saving has started';
 ## Data are ready to be used
-np.savetxt('trainingData.csv', resultedTrainingData, delimiter=',');
-np.savetxt('testData.csv', resultedTestData, delimiter=',');
-np.savetxt('trainingLabel.csv', trainingLabel, delimiter=',');
-np.savetxt('Features.csv', extractedHeader, delimiter=',', fmt='%s');
-np.savetxt('trainingID.csv', trainingId, delimiter=',');
-np.savetxt('testID.csv', testId, delimiter=',');
+np.savetxt('./data/train/trainingData.csv', resultedTrainingData, delimiter=',');
+np.savetxt('./data/test/testData.csv', resultedTestData, delimiter=',');
+np.savetxt('./data/train/trainingLabel.csv', trainingLabel, delimiter=',');
+np.savetxt('./data/features.csv', extractedHeader, delimiter=',', fmt='%s');
+np.savetxt('./data/train/trainingID.csv', trainingId, delimiter=',');
+np.savetxt('./data/test/testID.csv', testId, delimiter=',');
 print 'Saving has finished';
 print 'Thanks for attention =)';

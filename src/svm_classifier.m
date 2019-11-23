@@ -2,17 +2,17 @@ clc;
 clear all;
 close all;
 
-train_data_1 = csvread('trainingData.csv');
-test_data_1 = csvread('testData.csv');
+train_data_1 = csvread('../data/train/trainingData.csv');
+test_data_1 = csvread('../data/test/testData.csv');
 req_Columns = [1, 2, 4, 5, 6, 8];
 train_data_1 = train_data_1(:,req_Columns);
 test_data_1 = test_data_1(:,req_Columns);
-train_data_2 = csvread('training_data.csv');
-test_data_2 = csvread('test_data.csv');
-test_ID = csvread('testID.csv');
+train_data_2 = csvread('../data/train/training_data.csv');
+test_data_2 = csvread('../data/test/test_data.csv');
+test_ID = csvread('../data/test/testID.csv');
 train_size = size(train_data_1, 1);
 test_size = size(test_data_1, 1);
-train_label = csvread('trainingLabel.csv');
+train_label = csvread('../data/train/trainingLabel.csv');
 
 
 train_data_1 = zscore(train_data_1);
@@ -42,5 +42,5 @@ out_2 = predict(SVMModel_2, test_data_2);
 submission_1 = [test_ID, out_1];
 submission_2 = [test_ID, out_2];
 
-csvwrite('submission_svm_1.csv', submission_1);
-csvwrite('submission_svm_2.csv', submission_2);
+csvwrite('../data/submission_svm_1.csv', submission_1);
+csvwrite('../data/submission_svm_2.csv', submission_2);

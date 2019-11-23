@@ -5,8 +5,8 @@ close all;
 % Age is the 3rd feature;
 % Fare is the 7th feature.
 
-test_data = csvread('testData.csv');
-training_data = csvread('trainingData.csv');
+test_data = csvread('../data/test/testData.csv');
+training_data = csvread('../data/train/trainingData.csv');
 
 Row_size = size(test_data, 1);
 n = size(training_data, 1);
@@ -49,7 +49,7 @@ Age_training_data = [trainAge_training_data; testAge_training_data];
 Age_training_label = [trainAge_training_label; testAge_training_label];
 Age_test_data = [trainAge_test_data; testAge_test_data];
 
-Age_test_label = Age_test_data*inv(Age_training_data'*Age_training_data)*Age_training_data'*Age_training_label;
+Age_test_label = Age_test_data*inv(Age_training_data*Age_training_data)*Age_training_data*Age_training_label;
 for i=1:cinRows
 	p = Age_test_label(i);
 	low = floor(p);
@@ -72,8 +72,8 @@ test_data(inRows, 3) = Age_test_label;
 Fare_training_data = [trainFare_training_data; testFare_training_data];
 Fare_training_label = [trainFare_training_label; testFare_training_label];
 Fare_test_data = [trainFare_test_data; testFare_test_data];
-Fare_test_label = Fare_test_data*inv(Fare_training_data'*Fare_training_data)*Fare_training_data'*Fare_training_label;
+Fare_test_label = Fare_test_data*inv(Fare_training_data*Fare_training_data)*Fare_training_data*Fare_training_label;
 test_data(specRow, 7) = Fare_test_label;
 
-csvwrite('test_data.csv', test_data);
-csvwrite('training_data.csv', training_data);
+csvwrite('../data/test/test_data.csv', test_data);
+csvwrite('../data/train/training_data.csv', training_data);

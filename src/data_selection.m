@@ -4,13 +4,13 @@ close all;
 
 %% Here I am trying to see which size and data are suitable:
 
-trainData 	= csvread('trainData.csv');
+trainData 	= csvread('../data/train/trainData.csv');
 trainData	= zscore(trainData);
-trainBinData 	= csvread('trainBinData.csv');
+trainBinData 	= csvread('../data/train/trainBinData.csv');
 trainBinData	= zscore(trainBinData);
-trainFreqData 	= csvread('trainFreqData.csv');
+trainFreqData 	= csvread('../data/train/trainFreqData.csv');
 trainFreqData	= zscore(trainFreqData);
-trainLabel 	= csvread('trainLabel.csv');
+trainLabel 	= csvread('../data/train/trainLabel.csv');
 fprintf('Data has been loaded\n');
 
 trainSize 	= size(trainData, 1);
@@ -36,17 +36,17 @@ for p=1:P_MAX
 	netBin		= feedforwardnet(1);
 	netFreq		= feedforwardnet(1);
 	
-	net		= train(net, newTrainData', trainLabel');
-	netBin		= train(netBin, newTrainBinData', trainLabel');
-	netFreq		= train(netFreq, newTrainFreqData', trainLabel');
+	net		= train(net, newTrainData, trainLabel);
+	netBin		= train(netBin, newTrainBinData, trainLabel);
+	netFreq		= train(netFreq, newTrainFreqData, trainLabel);
 
-	y		= net(newTrainData');
-	yBin		= net(newTrainBinData');
-	yFreq		= net(newTrainFreqData');
+	y		= net(newTrainData);
+	yBin		= net(newTrainBinData);
+	yFreq		= net(newTrainFreqData);
 	
-	errData(p, 1)	= perform(net, y, trainLabel');
-	errData(p, 2)	= perform(netBin, yBin, trainLabel');
-	errData(p, 3)	= perform(netFreq, yFreq, trainLabel');
+	errData(p, 1)	= perform(net, y, trainLabel);
+	errData(p, 2)	= perform(netBin, yBin, trainLabel);
+	errData(p, 3)	= perform(netFreq, yFreq, trainLabel);
 
 	fprintf(' 1: %d;\n', errData(p,1));
 	fprintf(' 2: %d;\n', errData(p,2));
